@@ -56,3 +56,27 @@ const add=function(val1:number,val2:number,calc:Cals){
    }
 }
 console.log(add(1,3,"-"))
+//Tuples
+let gender:[string,string]=["Male","Female"];
+gender.push("Other")
+
+let admin:[number,string]=[1,"salman"];
+let error:[number,string]=[404,"Not Found"];
+
+
+//Class
+class Student{
+  private skills:string[]=[];
+    constructor(public name:string,public readonly rollNo:number){
+        this.name=name;
+        this.rollNo=rollNo;
+        this.skills=[];
+    }
+    addSkills(skill:string){
+        this.skills.push(skill);
+    }}
+const student1=new Student('Salman',1123)
+student1.addSkills("react")
+console.log(student1)
+
+
