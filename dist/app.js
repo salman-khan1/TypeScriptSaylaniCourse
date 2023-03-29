@@ -42,27 +42,82 @@ const add = function (val1, val2, calc) {
         return val1 - val2;
     }
 };
-console.log(add(1, 3, "-"));
+// console.log(add(1,3,"-"))
 //Tuples
 let gender = ["Male", "Female"];
 gender.push("Other");
 let admin = [1, "salman"];
 let error = [404, "Not Found"];
 //Class
-class Student {
-    constructor(name, rollNo) {
-        this.name = name;
-        this.rollNo = rollNo;
-        this.skills = [];
-        this.name = name;
-        this.rollNo = rollNo;
-        this.skills = [];
+// class Student{
+//   private skills:string[]=[];
+//     constructor(public name:string,public readonly rollNo:number){
+//         this.name=name;
+//         this.rollNo=rollNo;
+//         this.skills=[];
+//     }
+//     addSkills(skill:string){
+//         this.skills.push(skill);
+//     }}
+// const student1=new Student('Salman',1123)
+// student1.addSkills("react")
+// console.log(student1)
+class Product {
+    constructor(_id, _name, _price) {
+        this._id = _id;
+        this._name = _name;
+        this._price = _price;
     }
-    addSkills(skill) {
-        this.skills.push(skill);
+    get id() {
+        return this._id;
+    }
+    get name() {
+        return this._name;
+    }
+    set name(value) {
+        if (!value) {
+            throw new Error(" Name is required");
+        }
+        this._name = value;
+    }
+    get price() {
+        return this._price;
     }
 }
-const student1 = new Student('Salman', 1123);
-student1.addSkills("react");
-console.log(student1);
+// const product1=new Product(1,"Apple",100);
+// product1.name="Banana";
+// console.log(product1.name);
+class ClothingProduct extends Product {
+    constructor(id, name, price, _color, _size) {
+        super(id, name, price);
+        this._color = _color;
+        this._size = _size;
+    }
+    getDiscountRates() {
+        return this.price * 0.9;
+    }
+}
+class ElectronicsProduct extends Product {
+    constructor(id, name, price, _brand, _model) {
+        super(id, name, price);
+        this._brand = _brand;
+        this._model = _model;
+    }
+    getDiscountRates() {
+        return this.price * 0.5;
+    }
+}
+class Util {
+    constructor() {
+    }
+    static getInstance() {
+        if (!this.instance) {
+            this.instance = new Util();
+        }
+        return this.instance;
+    }
+}
+const tshirt = new ClothingProduct(1, "T-Shirt", 100, "Red", "XL");
+const utlInst = Util.getInstance();
+const utlInst2 = Util.getInstance();
 //# sourceMappingURL=app.js.map
