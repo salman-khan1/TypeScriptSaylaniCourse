@@ -104,42 +104,119 @@ abstract class Product{
 // const product1=new Product(1,"Apple",100);
 // product1.name="Banana";
 // console.log(product1.name);
-class ClothingProduct extends Product{
-    constructor(id:number,name:string,price:number,
-        private _color:string,private _size:string){
-        super(id,name,price);
-    }
-    getDiscountRates() {
-                return this.price * 0.9;
-              }
+// class ClothingProduct extends Product{
+//     constructor(id:number,name:string,price:number,
+//         private _color:string,private _size:string){
+//         super(id,name,price);
+//     }
+//     getDiscountRates() {
+//                 return this.price * 0.9;
+//               }
+// }
+// class ElectronicsProduct extends Product {
+//     constructor(
+//         id: number,
+//         name: string,
+//         price: number,
+//         private _brand: string,
+//         private _model: string
+//       ) {
+//         super(id, name, price);
+//       }
+//       getDiscountRates() {
+//         return this.price * 0.5;
+//       }
+//     }
+//     class Util {  // Singletons
+//         private static instance: Util;
+//         private constructor () {
+    
+//         }
+    
+//         static getInstance() {
+//             if(!this.instance) {
+//                 this.instance = new Util();
+//             }
+//             return this.instance;
+//         }
+//     }
+// const tshirt=new ClothingProduct(1,"T-Shirt",100,"Red","XL");
+// const utlInst = Util.getInstance();
+// const utlInst2 = Util.getInstance();
+
+// type Animal={
+//     name: string,
+//     ruuningSpeed: number
+// }
+// type Bird={
+//     name: string,
+//     flyingSpeed: number
+// }
+// type Creature=Animal|Bird; //Union Type
+
+// const tiger: Creature={
+//     name:"Tiger",
+//     ruuningSpeed:100
+// }
+// console.log(tiger);
+
+//Intersection types
+// type Creature2=Animal&Bird; 
+
+// const cockroach:Creature2={
+//     name:"Cockroach",
+//     ruuningSpeed:100,
+//     flyingSpeed:300
+// }
+
+
+// Interfaces
+// interface Animal{
+//     name:string;
+//     ruuningSpeed:number;
+// }
+// interface Bird{
+//     name:string;
+//     flyingSpeed:number;
+// }
+
+// interface Creature extends Animal,Bird{
+// }
+
+// const tiger:Creature={
+//     name:"Tiger",
+//     ruuningSpeed:100,
+//     flyingSpeed:30
+// }
+
+// interface Animal{
+//     name:string;
+//     ruuningSpeed:number;
+//     eat(food:string):void;
+// }
+// class Tiger implements Animal{
+//     constructor(public name:string,public ruuningSpeed:number){
+//         // super(name,ruuningSpeed);
+//     }
+//     eat(food:string) {
+//         return "eating food"
+//     }
+// }
+// console.log(Tiger.prototype.eat("meat"));
+
+//Type Guards
+type Animal={  
+    name: string,
+    ruuningSpeed: number
 }
-class ElectronicsProduct extends Product {
-    constructor(
-        id: number,
-        name: string,
-        price: number,
-        private _brand: string,
-        private _model: string
-      ) {
-        super(id, name, price);
-      }
-      getDiscountRates() {
-        return this.price * 0.5;
-      }
+type Bird={ 
+    name: string,
+    flyingSpeed: number
+}
+type Creature=Animal|Bird; 
+
+function log(creature:Creature){
+    if("runningSpeed" in creature){//Type Guards
+        console.log(creature.runningSpeed)
     }
-    class Util {  // Singletons
-        private static instance: Util;
-        private constructor () {
-    
-        }
-    
-        static getInstance() {
-            if(!this.instance) {
-                this.instance = new Util();
-            }
-            return this.instance;
-        }
-    }
-const tshirt=new ClothingProduct(1,"T-Shirt",100,"Red","XL");
-const utlInst = Util.getInstance();
-const utlInst2 = Util.getInstance();
+}

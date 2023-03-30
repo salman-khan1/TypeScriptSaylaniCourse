@@ -84,40 +84,9 @@ class Product {
         return this._price;
     }
 }
-// const product1=new Product(1,"Apple",100);
-// product1.name="Banana";
-// console.log(product1.name);
-class ClothingProduct extends Product {
-    constructor(id, name, price, _color, _size) {
-        super(id, name, price);
-        this._color = _color;
-        this._size = _size;
-    }
-    getDiscountRates() {
-        return this.price * 0.9;
+function log(creature) {
+    if ("runningSpeed" in creature) { //Type Guards
+        console.log(creature.runningSpeed);
     }
 }
-class ElectronicsProduct extends Product {
-    constructor(id, name, price, _brand, _model) {
-        super(id, name, price);
-        this._brand = _brand;
-        this._model = _model;
-    }
-    getDiscountRates() {
-        return this.price * 0.5;
-    }
-}
-class Util {
-    constructor() {
-    }
-    static getInstance() {
-        if (!this.instance) {
-            this.instance = new Util();
-        }
-        return this.instance;
-    }
-}
-const tshirt = new ClothingProduct(1, "T-Shirt", 100, "Red", "XL");
-const utlInst = Util.getInstance();
-const utlInst2 = Util.getInstance();
 //# sourceMappingURL=app.js.map
