@@ -19,42 +19,42 @@ const btn = document.querySelector("#btn")!;
 // const arr:string[]=["Apple","orange"];
 // arr.push('Banana');
 
-const arr2: number[] = [1, 2, 3];
+// const arr2: number[] = [1, 2, 3];
 
 // !Objects
 
-type Person = {
-  name: String;
-  age: Number;
-  hobbies: String[];
-  email?: string; // optional field ky liey ? lagaty hy
-};
+// type Person = {
+//   name: String;
+//   age: Number;
+//   hobbies: String[];
+//   email?: string; // optional field ky liey ? lagaty hy
+// };
 
-let person: Person = {
-  name: "salman", //key:value
-  age: 20,
-  hobbies: ["Sports", "Study"],
-};
+// let person: Person = {
+//   name: "salman", //key:value
+//   age: 20,
+//   hobbies: ["Sports", "Study"],
+// };
 
-const persons: Person[] = [];
-persons.push({
-  name: "Hussain", //key:value
-  age: 25,
-  hobbies: ["Sports", "Gaming"],
-});
+// const persons: Person[] = [];
+// persons.push({
+//   name: "Hussain", //key:value
+//   age: 25,
+//   hobbies: ["Sports", "Gaming"],
+// });
 // const add=function(val1:number,val2:number, cb:(x:string)=>void):number{
 //    cb("hello");
 //     return val1+val2;
 // let func:(x:number,y:number,z:(x:string)=>void)=>number;
-let func: (x: number, y: number, calc: number) => number; // func=add;
-type Cals = "add" | "subtract" | "+" | "-";
-const add = function (val1: number, val2: number, calc: Cals) {
-  if (calc === "add" || calc === "+") {
-    return val1 + val2;
-  } else if (calc === "subtract" || calc === "-") {
-    return val1 - val2;
-  }
-};
+// let func: (x: number, y: number, calc: number) => number; // func=add;
+// type Cals = "add" | "subtract" | "+" | "-";
+// const add = function (val1: number, val2: number, calc: Cals) {
+//   if (calc === "add" || calc === "+") {
+//     return val1 + val2;
+//   } else if (calc === "subtract" || calc === "-") {
+//     return val1 - val2;
+//   }
+// };
 // console.log(add(1,3,"-"))
 //!Tuples
 let gender: [string, string] = ["Male", "Female"];
@@ -222,8 +222,8 @@ abstract class Product {
 
 //!Type Casting
 
-const input = document.getElementById("input") as HTMLInputElement;
-const input01 = <HTMLInputElement>document.querySelector("#input1");
+// const input = document.getElementById("input") as HTMLInputElement;
+// const input01 = <HTMLInputElement>document.querySelector("#input1");
 
 //!Generic
 
@@ -241,10 +241,64 @@ const input01 = <HTMLInputElement>document.querySelector("#input1");
 //   };
 // promise().then((data) => {
 //   console.log(data.split(" "));
-// });
+//  });
 
-function merge<T extends object,U extends object>(objA:T,objB:U){
-    return {...objA,...objB};
+// function merge<T extends object,U extends object>(objA:T,objB:U){
+//     return {...objA,...objB};
+// }
+// const merged=merge({name:"Salman"},{id:123})
+// console.log(merged.name)
+
+//!Decorators
+
+// function Logger(template:String){   //Decorator Factory
+//     return function(constructor:Function){
+//       console.log("Logging....")
+//       console.log(template)
+//     }
+// }
+// function FillHtml(template:string,elemId:string){
+//   return function(constructor:any){
+//     console.log(constructor)
+//     const elem=document.getElementById(elemId);
+//     const p=new constructor();
+//     if(elem){
+//       elem.innerHTML=template;
+//       elem.querySelector("h1")!.innerText=p.name;
+//     }
+//   }
+// }
+// @Logger("calling from person")
+// @FillHtml("<h1>Hello</h1>","app")
+// class Person{
+//   name : string="Salman";
+//   constructor(){
+//   }
+// }
+
+// @Logger("Calling from Animal")
+// class Animal {
+//     name = "Cat";
+//     constructor() {
+//     }
+// }
+
+// !Function overloading
+
+type Combined=string|number;
+function add(x:number,y:number):number;
+function add(x:string,y:string):string;
+function add(x:Combined,y:Combined){
+  if(typeof x==="string" && typeof y==="string"){
+    return x+y;
+  }else if(typeof x==="number" && typeof y==="number"){
+    return x+y;
+  }else{
+    throw new Error("Invalid input, Type did not match");
+  }
+    
 }
-const merged=merge({name:"Salman"},{id:123})
-console.log(merged.name)
+const value=add("Salman","Khan"); //as string;
+const value2=add(5,4); //as number;
+console.log(value.split(" "));
+console.log(value2);
